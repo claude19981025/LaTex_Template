@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}簡介}{1}{section.1}%
+\contentsline {section}{\numberline {2}圖表示例}{1}{section.2}%
+\contentsline {subsection}{\numberline {2.1}插入圖片}{1}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}插入表格}{1}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}並排圖表}{1}{subsection.2.3}%
+\contentsline {section}{\numberline {3}代碼示例}{1}{section.3}%
+\contentsline {section}{\numberline {4}結論}{2}{section.4}%

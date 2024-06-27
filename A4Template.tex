@@ -1,0 +1,138 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}   % 支持 UTF-8 編碼
+\usepackage{amsmath, amssymb} % 支持數學符號
+\usepackage{graphicx}         % 插入圖片
+\usepackage{hyperref}         % 超鏈接
+\usepackage{caption}          % 圖表標題
+\usepackage{subcaption}       % 子圖表
+\usepackage{listings}         % 代碼高亮
+\usepackage{xcolor}           % 顏色
+\usepackage{geometry}         % 頁面設置
+\usepackage{fancyhdr}         % 頁眉頁腳
+\usepackage{booktabs}         % 美化表格
+\usepackage{multicol}         % 多欄排版
+\usepackage{tikz}             % 繪圖
+\usepackage{enumitem}         % 自定義列表
+
+
+%中文輸入配置模塊
+%如果報錯不能編譯，請至Options -> Configure TeXstudio後，選Build，將Default Compiler設置爲支持xeCJK包的XeLatex或LuaLaTeX
+
+
+
+\ifXeTeX	%若使用XeTex編譯器
+\usepackage{xeCJK}	% 支持中文輸入
+\usepackage{fontspec}	% 允許更換字體
+\setmainfont[Path=./fonts/]{TW-Kai-98-1.ttf} %楷體
+%\setmainfont[Path=./fonts/]{TW-Sung-98-1.ttf} %宋體
+%\newfontfamily\song{SimSun}
+\fi
+
+\ifLuaTeX
+\usepackage{luatexja-fontspec}	% LuaLaTeX支持的中文包
+\usepackage{fontspec}	% 允許更換字體
+\setmainfont[Path=./fonts/]{TW-Sung-98-1.ttf} %宋體
+\fi
+
+
+% 頁面設置
+\geometry{a4paper, margin=1in}
+
+% 頁眉頁腳設置
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Your Name} %[位置][內容] 位置：E(偶數頁)O(奇數頁)LCR
+\fancyhead[R]{\thepage}
+
+% 代碼高亮設置
+\lstset{
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{green},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	frame=single,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	breaklines=true,
+	backgroundcolor=\color{lightgray!20},
+	captionpos=b
+}
+
+% 用於縮短高亮指令
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
+
+\title{A4繁體中文模板}
+\author{盧永鈞}
+\date{\today}
+
+\begin{document}
+	
+\maketitle % 打印作者姓名，編輯日期
+
+%\begin{abstract}
+	
+%\end{abstract}
+	
+\tableofcontents %打印目錄
+	
+\section{簡介}
+這是簡介部分，簡要介紹文檔的背景和目的。Enslish font is ok
+	
+\section{圖表示例}
+	
+\subsection{插入圖片}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{example-image} % 替換為你的圖片文件
+	\caption{這是一個示例圖片}
+	\label{fig:example}
+\end{figure}
+	
+\subsection{插入表格}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		A & B & C \\
+		\hline
+		1 & 2 & 3 \\
+		4 & 5 & 6 \\
+		7 & 8 & 9 \\
+		\hline
+	\end{tabular}
+	\caption{這是一個示例表格}
+	\label{tab:example}
+\end{table}
+	
+\subsection{並排圖表}
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{example-image-a} % 替換為你的圖片文件
+		\caption{子圖 A}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{example-image-b} % 替換為你的圖片文件
+		\caption{子圖 B}
+	\end{subfigure}
+	\caption{並排圖表示例}
+	\label{fig:sidebyside}
+\end{figure}
+	
+\section{代碼示例}
+\begin{lstlisting}[language=Python, caption=Python 代碼示例]
+	def hello_world():
+	print("Hello, world!")
+	
+	hello_world()
+\end{lstlisting}
+	
+\section{結論}
+結論打在這裏
+	
+\end{document}
