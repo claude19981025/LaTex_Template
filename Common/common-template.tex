@@ -1,0 +1,332 @@
+\documentclass[12pt,a4paper]{article}
+\title{Common Template}
+\author{Claude Lu}
+
+\usepackage{xcolor}     
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem} %允許自定義bullet
+\usepackage{amsmath, amssymb, amsfonts} %basic package for math expressions.
+\usepackage{listings}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+%表格必用
+\usepackage{multirow}
+\usepackage{hhline, booktabs}
+%enable hyperlink
+\usepackage{hyperref}
+\usepackage{array}
+
+%enable lstlisting
+\usepackage{listings}
+
+\usepackage{framed}
+
+%自定義顏色
+\definecolor{rublue}{HTML}{0036A7}
+\definecolor{rured}{HTML}{D62718}
+\definecolor{vscodegreen}{HTML}{4EC9B0}
+\definecolor{vscodeblack}{HTML}{1E1E1E}
+%\definecolor{vscodeblack}{HTML}{4D4D4D}
+\definecolor{vscodeyellow}{HTML}{DCDCAA}
+\definecolor{vscodeblue}{HTML}{569CD6}
+%自定義命令
+\newcommand{\bluetexttt}[1]{\textcolor{blue}{\texttt{#1}}}
+\newcommand{\redtexttt}[1]{\textcolor{red}{\texttt{#1}}}
+\newcommand{\redtext}[1]{\textcolor{red}{#1}}
+
+\newcommand{\rt}[1]{\textcolor{red}{#1}}
+\newcommand{\bt}[1]{\textcolor{blue}{#1}}
+\newcommand{\vsgt}[1]{\textcolor{vscodegreen}{#1}}
+\newcommand{\vsft}[1]{\textcolor{vscodeyellow}{#1}}
+\newcommand{\vsbt}[1]{\textcolor{vscodeblue}{#1}}
+
+\newcommand{\struct}[1]{\colorbox{vscodeblack}{\vsgt{#1}}}
+\newcommand{\function}[1]{\colorbox{vscodeblack}{\vsft{#1}}}
+\newcommand{\macro}[1]{\colorbox{vscodeblack}{\vsbt{#1}}}
+
+
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+
+
+\lstset{
+	basicstyle=\ttfamily, %use typewriter font
+	keywordstyle=\color{blue},%關鍵字顏色
+	commentstyle=\color{teal}, %註釋顏色 
+	stringstyle=\color{red}, % Strings in red
+	tabsize=4, % Set tab size to 4 spaces
+	showspaces=false, % Do not show spaces
+	showstringspaces=true, % Do not show string spaces
+	breaklines=true, %自動換行
+	frame=single %在代碼外加上外框
+}
+\begin{document}
+% show manual
+\tableofcontents
+\maketitle
+
+\section{Math Expressions}
+\subsection{Display Mode}
+superscipts: $$2x^3$$
+$$2x^{2x+3}$$
+subscripts: $$2x_{3}$$
+$$x_{123}$$
+$$a_0, a_1, a_2, \ldots, a_{100}$$
+Greek letters
+$$\pi$$
+$$\Pi$$
+Trig functions
+$$y=\sin x$$ %always add '\' before trig functions
+$$y=\sin^{-1}\theta$$	
+$$y=\arcsin x$$
+Log functions
+$$y=\log_5 x$$
+$$y=\ln x$$
+Roots
+$$\sqrt{2}$$
+$$\sqrt[3]{27}$$
+$$\sqrt{x^2+y^2}$$
+Fractions
+$$\frac{2}{3}$$
+Mathbb
+$$\mathbb{R}$$
+Parentheses with larger size: $$2\left(\frac{1}{2}\right)$$ %use \left( \right) to address 
+brackets
+$$\left( \frac{1}{2} \right)$$  	
+$$\left[ \frac{1}{2} \right]$$
+$$\left\{ \frac{1}{2} \right\}$$ %打大括號比較特別
+$$\left \langle \frac{1}{2} \right \rangle$$
+$$\left | \frac{1}{2} \right |$$
+$$\left. \frac{dy}{dx}\right|_{x=1}$$ %use . to not display half of brackets
+$$\left( \frac{1}{1+\left( \frac{1}{2} \right)} \right)$$ %()will adjust size depends on content
+\section{Notations for Calculus}
+The function $f(x)=(x-3)^2 + \frac{1}{2}$ has domain $\mathrm{D}_f:(-\infty,\infty)$ and range $\mathrm{R}_f:\left [\frac{1}{2},\infty\right )$\\
+
+$\lim \limits_{x \to a^-} f(x)$ %use '\to' for arrow
+
+$\lim \limits_{x \to a} \frac{f(x)-f(a)}{x-a}=f'(a)$
+
+$\int \sin xdx$
+
+%use \displaystyle for larger integral sign
+$\displaystyle{\int sinx \,dx}$ %use \, for space in math mode 
+
+$\displaystyle{\int \limits_{a}^{b}x^{2} \,dx=\left [ \frac{x^{3}}{3} \right ]_{a}^{b}}$
+
+$\displaystyle{\int \limits_{t_{0}}^{t}e^{-\alpha(t-\tau)}f(\tau)\,d\tau}$
+
+$\displaystyle{e^{-\alpha t}\int \limits_{t_{0}}^{t}e^{\alpha t}f(t)\,dt}$
+
+$\displaystyle{\sum \limits_{n=1}^{\infty}ar^{n}=a+ar+ar^{2}+\cdots+ar^{n}}$ %use cdot for 1 dot, cdots for 3 dots
+
+$\vec{v}=v_{1} \vec{i} + v_{2} \vec{j} = \langle v_{1},v_{2} \rangle$
+\pagebreak
+\section{Table}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{||c|c|c||}
+		\hhline{#===#}
+		% Use multicolumn to merge cells in the same row
+		% \multicolumn{number_of_columns}{alignment}{content}
+		\multicolumn{3}{||c||}{Graph Border Encoding}\\ \hline %hline for a line
+		Bit & plot & splot\\ 
+		\hhline{#===#}
+		1 & bottom & bottom left front\\ \hline
+		2 & left & bottom left back\\ \hline
+		4 & top & botton right front\\ \hline
+		8 & right & bottom right back\\ \hline
+		% use multirow to merge cells in the same column
+		16 & \multirow{8}{*}{no effect} & left vertical\\ \cline{1-1} \cline{3-3}
+		% when \hline does not fit, use cline to assign line for each ceel
+		32 & & back vertical\\ \cline{1-1} \cline{3-3}
+		64 & & right vertical\\ \cline{1-1} \cline{3-3}
+		128 & & front vertical\\ \cline{1-1} \cline{3-3}
+		256 & & top left back\\ \cline{1-1} \cline{3-3}
+		512 & & top right back\\ \cline{1-1} \cline{3-3}
+		1024 & & top left front\\ \cline{1-1} \cline{3-3}
+		2048 & & top right front\\ \cline{1-1} \cline{3-3}
+		\hhline{#===#}
+	\end{tabular}
+	\label{tab:table_template}
+	\caption{Table Template}
+\end{table}
+
+	The position of table is decided by compiler, unless you specify where it should be.\\[6pt]
+\begin{tabular}{|c||c|c|c|c|c|} %column numbers and alignment c=center, l=left, r=right
+	\hline %add horizontal line 
+	1 &2 &3 &4 &5 &6\\ \hline
+	$f(x)$&10&5&5&4&5\\ \hline
+\end{tabular}
+
+\vspace{1cm} %set vertical space
+
+\begin{table}[H] %must use 'float' package
+	\centering %center the table
+	\def\arraystrech{1.5} %拉大表格
+	\begin{tabular}{|cccccc|}
+		\hline 
+		1 &2 &3 &4 &5 &6\\ \hline 
+		1 &2 &3 &4 &5 &6\\ \hline
+	\end{tabular}
+	\caption{Test Table} %add caption to table
+\end{table}
+\vspace{1cm}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|p{5cm}|} %use p{width} for paragraph instead of l, r, or c for paragraph and assign width
+		\hline
+		$f(x)$ & $f'(x)$ \\ \hline
+		$x > 0$ & The function $f(x)$ is increasing. The function $f(x)$ is increasing. The function $f(x)$ is increasing.\\
+		\hline
+	\end{tabular}
+\end{table}
+\pagebreak
+
+\section{list}
+\subsection{basic options}
+\begin{enumerate}
+	\item pencil
+	\item calculator
+	\item ruler
+	\begin{enumerate}
+		\item steel ruler
+		\begin{enumerate}
+			\item long steel ruler
+			\item short steel ruler
+		\end{enumerate}
+	\end{enumerate}
+\end{enumerate}
+
+%\begin{enumerate}[A.] %use package enumerate to assign symbol for enumeration
+%	\item pencil
+%	\item calculator
+%	\item ruler
+%\end{enumerate}
+\vspace{1cm}
+\begin{enumerate} \setcounter{enumi}{5} %set the start number of enumeration
+	\item pencil
+	\item calculator
+	\item ruler
+\end{enumerate}
+%\vspace{1cm}
+Bullet list
+\begin{itemize} %bullet list
+	\item pencil
+	\item calculator
+	\item ruler
+\end{itemize}
+Custom bullet for enumerate environment
+\begin{enumerate} %to cancel the number, use []
+	\item[one] pencil %for customization
+	\item[two] calculator
+	\item[] ruler
+\end{enumerate}
+\pagebreak
+
+\section{text document formatting}
+\subsection{font size and style}
+This will produce \textit{italicized} text.
+
+This will produce \textbf{bold face} text.
+
+This will produce \textsc{small caps} text.
+
+This will produce \texttt{typewriter font} text.
+
+Please visit Michelle Krummel's website at \url{http://michellekrummel.com} %use hyperref for hyperlink
+Use href to set text you want to display for hyperlink like \href{http://michellekrummel.com}{This}
+\vspace{1cm}
+This will produce \begin{large}large font\end{large}
+
+This will produce \begin{Large}Large font\end{Large}
+
+This will produce \begin{huge}huge font\end{huge}
+
+This will produce \begin{Huge}Huge font\end{Huge}
+
+This will produce \begin{normalsize}normal font\end{normalsize}
+
+This will produce \begin{small}small font\end{small}
+
+This will produce \begin{footnotesize}footnotesize font\end{footnotesize}
+
+This will produce \begin{scriptsize}scriptsize font\end{scriptsize}
+
+This will produce \begin{tiny}tiny font\end{tiny}
+\subsection{text color}
+Define textcolor by yourself
+\begin{verbatim}
+	\definecolor{rublue}{HTML}{0036A7} %self-defined color
+	\newcommand{\bluetext}[1]{\textcolor{blue}{#1}} %for faster colouring
+\end{verbatim}
+\textcolor{red}{This can change color of text} %可以改變字體顏色
+\subsection{alignment}
+\begin{center}
+	This line is centered
+\end{center}
+
+\begin{flushleft}
+	This line is left-justified
+\end{flushleft}
+
+\begin{flushright}
+	This line is right-justified
+\end{flushright}
+\subsection{verbatim}
+Use verbatim to ``display normally'', ignoring all latex commands. Useful when typing contents containing programming language. Beware that verbatim environment ignores \textbf{tab}, but preserves \textbf{space}.
+\begin{verbatim}
+	#include<iostream>
+	int main(){
+		std::out << Hello World << std::endl;
+		return 0;
+	}
+\end{verbatim}
+%\center
+%The following content is all centered
+\subsection{listings}
+ChatGPT strongly recommend using \texttt{listings} for program-related content. To use it, you have to include use package \texttt{listings} adn use the command \texttt{lstset} first: 
+\begin{verbatim}
+	\lstset{
+		basicstyle=\ttfamily, %use typewriter font
+		keywordstyle=\color{*}
+		commentstyle=\color{*}, 
+		stringstyle=\color{*}, % Strings in red
+		tabsize=4, % Set tab size to 4 spaces
+		showspaces=false, % Do not show spaces
+		showstringspaces=false, % Do not show string spaces
+		breaklines=true, % Automatic line breaking
+		frame=single % Add a frame around the code
+	}	    
+\end{verbatim}
+\lstset{
+	basicstyle=\ttfamily, %use typewriter font
+	keywordstyle=\color{blue},%關鍵字顏色
+	commentstyle=\color{green}, %註釋顏色 
+	stringstyle=\color{red}, % Strings in red
+	tabsize=4, % Set tab size to 4 spaces
+	showspaces=false, % Do not show spaces
+	showstringspaces=false, % Do not show string spaces
+	breaklines=true, %自動換行
+	frame=single %在代碼外加上外框
+}
+Then you can use display your code in a ``IDE'' way
+\begin{lstlisting}[language=Python]
+	def example_function():
+	# This is a comment
+	print("Hello, world!") # Print statement
+	
+	if True:
+	print("Condition met")
+	else:
+	print("Condition not met")
+\end{lstlisting}
+
+\section{Picture}
+	\begin{figure}[H] %h stands for here, b stands for bottom
+	\centering
+	\includegraphics[width=10cm]{./Pictures/example} %use package graphicx
+	\caption{picture}		
+\end{figure}
+
+
+\end{document}
